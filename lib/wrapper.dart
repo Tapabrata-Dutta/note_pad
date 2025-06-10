@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:note_pad/Pages/Test/todoPage.dart';
 import 'package:note_pad/Pages/login.dart';
 import 'package:note_pad/Pages/notes_page.dart';
+import 'package:note_pad/Pages/todo.dart';
+
+import 'Pages/Test/model.dart';
 
 class wrapper extends StatefulWidget {
   @override
@@ -20,8 +24,11 @@ class _wrapperState extends State<wrapper> {
           return Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasData) {
-          return MyHomePage(user: snapshot.data!);  // Pass user object here!
-        } else {
+          // return MyHomePage(user: snapshot.data!);
+          return Todoo();
+        }
+        // }
+        else {
           return login();
         }
       },

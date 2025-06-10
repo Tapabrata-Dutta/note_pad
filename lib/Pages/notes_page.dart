@@ -22,8 +22,10 @@ class _MyHomePageState extends State<MyHomePage> {
     await FirebaseFirestore.instance.collection('notes').add({
       'content': content.trim(),
       'timestamp': Timestamp.now(),
+      'uid': widget.user.uid,
     });
   }
+
 
   void _showEditDialog(String oldContent, String docId) {
     TextEditingController _editController = TextEditingController(text: oldContent);
@@ -54,10 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       .update({
                     'content': newContent,
                     'timestamp': Timestamp.now(),
+                    'uid': widget.user.uid,  // Add this ✅
                   });
                 }
                 Navigator.of(context).pop();
               },
+
               child: Text("Save"),
             ),
           ],
@@ -93,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TextField(
               controller: _noteController,
               decoration: const InputDecoration(
+                hintText: "Write your note...",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -112,15 +117,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   const SnackBar(content: Text('Note uploaded')),
                 );
               },
-              child: const Text('Save Note haha'),
-              child: const Text('Save Note'),
+              child: const Text('Save Notes'),
             ),
             const SizedBox(height: 20),
 
             // StreamBuilder to fetch data from Firestore
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance.collection('notes').orderBy('timestamp', descending: true).snapshots(),
+                stream: FirebaseFirestore.instance.collection('notes')
+                    .where('uid', isEqualTo: widget.user.uid)
+                    .orderBy('timestamp', descending: true)
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
@@ -159,7 +166,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         .collection('notes')
                                         .doc(notes[index].id)
                                         .delete();
-
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(content: Text("Note deleted")),
                                     );
