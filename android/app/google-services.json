@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "297515125251",
+    "project_id": "ytapp-e8a4f",
+    "storage_bucket": "ytapp-e8a4f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297515125251:android:c84ddfa287bcb44565dc36",
+        "android_client_info": {
+          "package_name": "com.bikram.yt_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDosDv0Bdz4sny2paLzK8tI01IyequbBkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297515125251:android:f71fd1e0372f524565dc36",
+        "android_client_info": {
+          "package_name": "com.example.note_pad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDosDv0Bdz4sny2paLzK8tI01IyequbBkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
