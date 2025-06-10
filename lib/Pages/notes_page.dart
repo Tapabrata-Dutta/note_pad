@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TextField(
               controller: _noteController,
               decoration: const InputDecoration(
+                hintText: "Write your note...",
                 border: OutlineInputBorder(),
               ),
             ),
@@ -112,7 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   const SnackBar(content: Text('Note uploaded')),
                 );
               },
-              child: const Text('Save Note haha'),
               child: const Text('Save Note'),
             ),
             const SizedBox(height: 20),
