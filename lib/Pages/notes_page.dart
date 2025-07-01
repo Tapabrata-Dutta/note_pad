@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
               child: const Text('Save Note haha'),
-              child: const Text('Save Note'),
+              // child: const Text('Save Note'),
             ),
             const SizedBox(height: 20),
 
